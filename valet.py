@@ -19,7 +19,7 @@ def run_rules(path, rules):
 		if filename[0] == '.':
 			continue
 		for fun in rules:
-			log('[i] tries {0} on {1}'.format(fun.__name__, path + filename))
+			# log('[i] tries {0} on {1}'.format(fun.__name__, path + filename))
 			fun(path + filename)
 
 
@@ -31,6 +31,6 @@ def run(path=None):
 
 def log(txt):
 	from datetime import datetime
-	print txt
+	# print txt
 	with open('/Users/bvsc/Desktop/valet_log.txt', 'a') as f:
 		f.write(str(datetime.now()) + ' ' + txt + '\n')

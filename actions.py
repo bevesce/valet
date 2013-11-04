@@ -45,4 +45,19 @@ def tag(path, tags):
     for tag_str in tags:
         valet.log('[+] tagging {0} with {1}'.format(path, tag_str))
         subprocess.check_output('/usr/local/bin/tag -a {0} "{1}"'.format(tag_str, path), shell=True)
-    valet.log('[+] tagged' )
+    valet.log('[+] tagged')
+
+
+def notify(message, title='Valet', subtitle=None, url=None):
+    command_base = '/usr/local/Cellar/terminal-notifier/1.5.1/terminal-notifier.app/Contents/MacOS/terminal-notifier'
+    command = [
+        command_base,
+        '-message "{0}"'.format(message),
+    ]
+    if title:
+        command.append('-title "{0}"'.format(title))
+    if subtitle:
+        command.append('-subtitle "{0}"'.format(subtitle))
+    if url:
+        command.append('-open "{0}"'.format(url))
+    subprocess.call(' '.join(command), shell=True)

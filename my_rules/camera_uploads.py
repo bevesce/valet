@@ -10,6 +10,7 @@ def move_images(path):
 	if c.extension_in(path, c.image_extensions):
 		a.tag(path, ['img:Found', 'Inbox'])
 		a.move(path, '/Users/bvsc/Dropbox/Images')
+		a.notify('image ' + path + ' moved')
 
 
 valet.run('/Users/bvsc/Dropbox/Camera Uploads')

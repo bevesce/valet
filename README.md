@@ -10,7 +10,7 @@ Create set of rules in new file and add this script to launchd with paths to wat
 
 ### Dependencies
 
-Uses [jdberry/tag](https://github.com/jdberry/tag) for tagging.
+Uses [jdberry/tag](https://github.com/jdberry/tag) for tagging and [alloy/terminal-notifier](https://github.com/alloy/terminal-notifier) for notifications.
 
 ---
 

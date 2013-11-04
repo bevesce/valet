@@ -16,22 +16,27 @@ def move_images(path):
 	if c.extension_in(path, c.image_extensions):
 		a.tag(path, 'img:Found')
 		a.move(path, '/Users/bvsc/Dropbox/Images')
+		a.notify('image ' + path.split('/')[-1] + ' moved')
 
 
 @valet.rule
 def move_movies(path):
 	if c.extension_in(path, c.movie_extensions):
 		a.move(path, '/Users/bvsc/Movies')
+		a.notify(path.split('/')[-1], url='file:///Users/bvsc/Movies/' + path.split('/')[-1])
 
 
 @valet.rule
 def move_books(path):
 	if c.extension_in(path, c.book_extensions):
+		a.tag(path, 'Inbox')
 		a.move(path, '/Users/bvsc/Dropbox/Library')
+		a.notify('book ' + path.split('/')[-1] + ' moved')
 
 @valet.rule
 def move_inside_folder(path):
 	if c.is_dir(path):
+		a.tag(path, 'Inbox')
 		valet.run_rules(path, [move_movies, move_books])
 
 valet.run('/Users/bvsc/Downloads')
