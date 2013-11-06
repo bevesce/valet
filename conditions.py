@@ -4,6 +4,28 @@ movie_extensions = ['mov', 'mp4', 'mkv', 'avi', 'wmv', 'flv']
 image_extensions = ['jpg', 'jpeg', 'gif', 'svg', 'png']
 book_extensions = ['pdf', 'epub', 'mobi', 'cbr', 'cbz']
 
+"""
+convention: if path is an argument it always should be first one
+"""
+
+
+def name_contains(path, word):
+    return word in path.split('/')[-1]
+
+
+def name_contains_all(path, words):
+    for word in words:
+        if not name_contains(path, word):
+            return False
+    return True
+
+
+def name_contains_any(path, words):
+    for word in words:
+        if name_contains(path, word):
+            return True
+    return False
+
 
 def extension_in(path, extensions):
 	_, extension = os.path.splitext(path)

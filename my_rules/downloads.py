@@ -22,6 +22,7 @@ def move_images(path):
 @valet.rule
 def move_movies(path):
 	if c.extension_in(path, c.movie_extensions):
+		a.tag(path, 'Inbox')
 		a.move(path, '/Users/bvsc/Movies')
 		a.notify(path.split('/')[-1], url='file:///Users/bvsc/Movies/' + path.split('/')[-1])
 
