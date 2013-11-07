@@ -1,8 +1,28 @@
 import os
+from Foundation import NSPropertyListSerialization
+from xattr import setxattr, getxattr
+
+### Helpers ###
 
 movie_extensions = ['mov', 'mp4', 'mkv', 'avi', 'wmv', 'flv']
 image_extensions = ['jpg', 'jpeg', 'gif', 'svg', 'png']
 book_extensions = ['pdf', 'epub', 'mobi', 'cbr', 'cbz']
+
+ 
+def _get_item_where_froms(path):
+    """Get kMDItemWhereFroms from a file, returns an array of strings or None if no value is set."""
+    kMDItemWhereFroms = "com.apple.metadata:kMDItemWhereFroms"
+    try:
+        plist = buffer(getxattr(path, kMDItemWhereFroms))
+        if plist:
+            data = NSPropertyListSerialization.propertyListWithData_options_format_error_(plist, 0, None, None)[0]
+            return data
+    except KeyError:
+        pass
+    return None
+
+
+### Conditions ###
 
 """
 convention: if path is an argument it always should be first one
@@ -49,3 +69,13 @@ def dir_contains_extensions(path, extensions):
         if extension_in(filename, extensions):
             return True
     return False
+
+
+def any_where_froms_starts_with(path, start):
+        where_froms = _get_item_where_froms(path)
+        if not where_froms:
+            return False
+        for where_from in where_froms:
+            if where_from.startswith(start):
+                return True
+        return False

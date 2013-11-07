@@ -28,6 +28,12 @@ def move_movies(path):
 
 
 @valet.rule
+def open_trash_orange_invoice(path):
+	if c.any_where_froms_starts_with(path, 'https://www.orange.pl/gear/ecare/invoices/invoicedocumentexportservlet'):
+		a.open(path)
+
+
+@valet.rule
 def move_books(path):
 	if c.extension_in(path, c.book_extensions):
 		a.tag(path, 'Inbox')

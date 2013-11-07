@@ -61,3 +61,11 @@ def notify(message, title='Valet', subtitle=None, url=None):
     if url:
         command.append('-open "{0}"'.format(url))
     subprocess.call(' '.join(command), shell=True)
+
+
+def open(path):
+    subprocess.check_output('open ' + path, shell=True)
+
+
+def trash(path):
+    shutil.move(path, os.path.expanduser('~/.Trash'))
