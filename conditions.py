@@ -4,7 +4,7 @@ from xattr import setxattr, getxattr
 
 ### Helpers ###
 
-movie_extensions = ['mov', 'mp4', 'mkv', 'avi', 'wmv', 'flv']
+movie_extensions = ['mov', 'mp4', 'mkv', 'avi', 'wmv', 'flv', 'm4v']
 image_extensions = ['jpg', 'jpeg', 'gif', 'svg', 'png']
 book_extensions = ['pdf', 'epub', 'mobi', 'cbr', 'cbz']
 
