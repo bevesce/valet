@@ -20,7 +20,9 @@ def run_rules(path, rules):
 			continue
 		for fun in rules:
 			# log('[i] tries {0} on {1}'.format(fun.__name__, path + filename))
-			fun(path + filename)
+			should_not_continue = fun(path + filename)
+			if should_not_continue:
+				break
 
 
 def run(path=None):
@@ -30,7 +32,8 @@ def run(path=None):
 
 
 def log(txt):
-	from datetime import datetime
+	pass
+	# from datetime import datetime
 	# print txt
-	with open('/Users/bvsc/Desktop/valet_log.txt', 'a') as f:
-		f.write(str(datetime.now()) + ' ' + txt + '\n')
+	# with open('/Users/bvsc/Desktop/valet_log.txt', 'a') as f:
+		# f.write(str(datetime.now()) + ' ' + txt + '\n')
