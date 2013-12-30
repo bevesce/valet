@@ -79,3 +79,14 @@ def any_where_froms_starts_with(path, start):
             if where_from.startswith(start):
                 return True
         return False
+
+
+def any_where_froms_constains(path, word):
+        where_froms = _get_item_where_froms(path)
+        if not where_froms:
+            return False
+        for where_from in where_froms:
+            if word in where_from:
+                return True
+        return False
+
