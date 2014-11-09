@@ -39,9 +39,7 @@ class Books(valet.Rule):
         return self.is_book()
 
     def what(self):
-        self.move(
-            '~/Dropbox/Books'
-        )
+        self.move('~/Dropbox/Books')
 
 
 class Comics(valet.Rule):
@@ -49,9 +47,7 @@ class Comics(valet.Rule):
         return self.is_comic()
 
     def what(self):
-        self.move(
-            '~/Dropbox/Books/Comics'
-        )
+        self.move('~/Dropbox/Books/Comics')
 
 
 class Dirs(valet.Rule):

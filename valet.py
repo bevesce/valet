@@ -70,13 +70,11 @@ def logged(f):
             f.__name__, _get_main_file(),
             ', '.join((str(a) for a in args))
         )
-        # try:
-            # if not DEBUG:
-        f(self, *args, **kwargs)
-            # logger.success(msg)
-        # except Exception as e:
-            # logger.error(msg + ' ' + str(e))
-            # raise e
+        try:
+            f(self, *args, **kwargs)
+            logger.success(msg)
+        except Exception as e:
+            logger.error(msg + ' ' + str(e))
     return to_log
 
 
