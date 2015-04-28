@@ -41,7 +41,7 @@ Available checks to use in `when` method:
 
 ### Whats
 
-Available actions to use in `when` method:
+Available actions to use in `then` method:
 
 - `move(to_path)`
 - `tag(tag)`
