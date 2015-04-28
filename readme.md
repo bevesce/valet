@@ -7,7 +7,7 @@ Valet is an automation system for OSX that runs predefined rules when content of
 To create rule you need to subclass `valet.Rule` and implement two methods:
 
 1. `when` should return True if rule should be applied
-2. `what` should define actions that rule executes
+2. `then` should define actions that rule executes
 
 ```
 import valet
@@ -16,7 +16,7 @@ class Movies(valet.Rule):
     def when(self):
         return self.is_movie()
 
-    def what(self):
+    def then(self):
         self.move('~/Movies')
 
 valet.run('~/Downloads')
@@ -54,3 +54,7 @@ Available actions to use in `when` method:
 ## Installing rules
 
 Just run `python <path_to_rule> load`.
+
+## Changelog
+
+- rename `whats` to `then`, of course

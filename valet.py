@@ -25,6 +25,7 @@ logger = log.Log()
 
 
 def run(dir_path):
+    dir_path = os.path.expanduser(dir_path)
     logger.log('run on ' + dir_path)
     if docopt.docopt(__doc__)['load']:
         _load(dir_path)
@@ -91,6 +92,9 @@ class Whens(object):
     comic_extensions = (
         'cbr', 'cbz'
     )
+    text_extensions = (
+        'txt', 'markdown', 'md', 'taskpaper'
+    )
 
     def name_contains(self, word):
         return word in self.lower_name
@@ -116,6 +120,9 @@ class Whens(object):
     def is_comic(self):
         return self.extension_in(*self.comic_extensions)
 
+    def is_text(self):
+        return self.extension_in(*self.text_extensions)
+
     def is_dir(self):
         return os.path.isdir(self.fullpath)
 
@@ -123,13 +130,14 @@ class Whens(object):
         return tags.has_tag(self.fullpath, tag)
 
 
-class Whats(object):
+class Thens(object):
     @logged
     def move(self, to_path):
         to_path = os.path.expanduser(to_path)
         self._make_dirs(to_path)
         full_to_path = self._gen_new_path(to_path)
         shutil.move(self.fullpath, full_to_path)
+        self.set_path(full_to_path)
 
     def _make_dirs(self, path):
         try:
@@ -187,8 +195,15 @@ class Whats(object):
             os.path.getctime(self.fullpath)
         )
 
+    def read(self):
+        with open(self.fullpath) as f:
+            return f.read()
 
-class Rule(Whens, Whats):
+    def call(self, command):
+        return subprocess.call(command)
+
+
+class Rule(Whens, Thens):
     def __init__(self, path):
         self.set_path(path)
 
@@ -202,13 +217,13 @@ class Rule(Whens, Whats):
     def do(self):
         self.prepare()
         if self.when():
-            self.what()
+            self.then()
         self.finish()
 
     def when(self):
         return True
 
-    def what(self):
+    def then(self):
         raise NotImplementedError()
 
     def prepare(self):
