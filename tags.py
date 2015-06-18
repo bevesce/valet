@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import subprocess
 
 tag_base = '/usr/local/bin/tag '

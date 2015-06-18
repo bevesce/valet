@@ -48,6 +48,7 @@ def _get_main_file():
 def run_rules(dir_path=None, paths=None, rules=None):
     rules = rules or Rule.__subclasses__()
     for path in _chain_paths(dir_path, paths):
+        path = path.decode('utf-8')
         prev_path = path
         for rule in rules:
             r = rule(prev_path)
