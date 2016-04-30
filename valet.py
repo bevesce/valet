@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-"""
 """
 Usage:
     valet.py load
@@ -7,6 +8,7 @@ Usage:
 Options:
     -h --help    Show this screen
 """
+from __future__ import unicode_literals
 import sys
 import os
 import subprocess
@@ -48,7 +50,8 @@ def _get_main_file():
 def run_rules(dir_path=None, paths=None, rules=None):
     rules = rules or Rule.__subclasses__()
     for path in _chain_paths(dir_path, paths):
-        path = path.decode('utf-8')
+        if isinstance(path, str):
+            path = path.decode('utf-8')
         prev_path = path
         for rule in rules:
             r = rule(prev_path)
@@ -70,13 +73,13 @@ def logged(f):
     def to_log(self, *args, **kwargs):
         msg = '{}: {} - {}'.format(
             f.__name__, _get_main_file(),
-            ', '.join((str(a) for a in args))
+            ', '.join((unicode(a) for a in args))
         )
         try:
             f(self, *args, **kwargs)
             logger.success(msg)
         except Exception as e:
-            logger.error(msg + ' ' + str(e))
+            logger.error(msg + ' ' + unicode(e))
     return to_log
 
 
@@ -138,6 +141,7 @@ class Thens(object):
         self._make_dirs(to_path)
         full_to_path = self._gen_new_path(to_path)
         shutil.move(self.fullpath, full_to_path)
+        print full_to_path
         self.set_path(full_to_path)
 
     def _make_dirs(self, path):
@@ -152,7 +156,7 @@ class Thens(object):
         file_index = 1
         while os.path.exists(new_path):
             new_path = os.path.join(
-                to_path, self.name + str(file_index) + '.' + self.extension
+                to_path, self.name + unicode(file_index) + '.' + self.extension
             )
             file_index += 1
         return new_path
