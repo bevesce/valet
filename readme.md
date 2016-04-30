@@ -39,7 +39,7 @@ Available checks to use in `when` method:
 - `is_dir()`
 - `has_tag(tag)`
 
-### Whats
+### Thens
 
 Available actions to use in `then` method:
 
