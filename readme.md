@@ -2,7 +2,7 @@
 
 # Valet
 
-Valet is an automation system for OSX that runs predefined rules when content of given directory changes.
+Valet is an automation system for macOS that runs predefined rules when content of given directory changes.
 
 ## Defining rules
 
