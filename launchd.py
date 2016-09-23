@@ -25,7 +25,6 @@ launchd_deamon_plist_template = """<?xml version="1.0" encoding="UTF-8"?>
 
 def load(rule_name, rule_path, path_to_observe):
     rule_path = os.path.abspath(rule_path)
-    path_to_observe = path_to_observe
     launchd_deamon_plist = launchd_deamon_plist_template.format(
         rule_name=rule_name,
         rule_path=rule_path,
