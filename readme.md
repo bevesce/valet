@@ -1,3 +1,5 @@
+![icon](icon.png)
+
 # Valet
 
 Valet is an automation system for OSX that runs predefined rules when content of given directory changes.
@@ -54,7 +56,3 @@ Available actions to use in `then` method:
 ## Installing rules
 
 Just run `python <path_to_rule> load`.
-
-## Changelog
-
-- rename `whats` to `then`, of course
