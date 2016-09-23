@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path += [os.path.expanduser('~/Dropbox/Projects/Valet2')]
+sys.path += [os.path.expanduser('~/path/to/valet')]
 import valet
 
 
