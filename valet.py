@@ -166,6 +166,10 @@ class Thens(object):
         tags.add_tag(self.fullpath, tag)
 
     @logged
+    def remove_tag(self, tag):
+        tags.remove_tag(self.fullpath, tag)
+
+    @logged
     def open(self):
         subprocess.call(['open', self.fullpath])
 
