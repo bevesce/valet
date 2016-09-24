@@ -2,7 +2,7 @@ import unittest
 import mock
 import os
 
-import valet as v
+from valet import valet as v
 
 
 class TestAbstractRule(unittest.TestCase):

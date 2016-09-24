@@ -141,7 +141,7 @@ class Thens(object):
         self._make_dirs(to_path)
         full_to_path = self._gen_new_path(to_path)
         shutil.move(self.fullpath, full_to_path)
-        print full_to_path
+        print(full_to_path)
         self.set_path(full_to_path)
 
     def _make_dirs(self, path):
