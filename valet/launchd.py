@@ -36,6 +36,6 @@ def load(rule_name, rule_path, path_to_observe):
     with open(deamons_path, 'w') as f:
         f.write(launchd_deamon_plist)
     subprocess.call('launchctl load ' + deamons_path + '', shell=True)
-    print 'Loaded {}: {} on {}'.format(
+    print('Loaded {}: {} on {}'.format(
         rule_name, rule_path, path_to_observe
-    )
+    ))
