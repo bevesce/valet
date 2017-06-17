@@ -91,7 +91,7 @@ class Whens(object):
         'jpg', 'jpeg', 'gif', 'svg', 'png'
     )
     book_extensions = (
-        'pdf', 'epub', 'mobi'
+        'epub', 'mobi'
     )
     comic_extensions = (
         'cbr', 'cbz'
