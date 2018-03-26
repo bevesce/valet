@@ -10,6 +10,6 @@ class Log(object):
         self.log(msg, '[!]')
 
     def log(self, msg, prefix='[i]'):
-        print '{} {} {}'.format(
+        print('{} {} {}'.format(
             prefix, dt.datetime.now().isoformat(), msg
-        )
+        ))
